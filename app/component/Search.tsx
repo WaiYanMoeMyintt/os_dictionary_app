@@ -2,9 +2,10 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Dictionary from "./Dictionary";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Search = () => {
-  const [value, setValue] = useState<string>("whale");
+  const [value, setValue] = useState<string>("fish");
   const [dictionary, setDictionary] = useState<any>({});
   const [photo, setPhoto] = useState<any>({});
   const dictionaryAPI: string = `https://api.dictionaryapi.dev/api/v2/entries/en/${value}`;
@@ -25,6 +26,9 @@ const Search = () => {
       const resData = await fetchAPI.json();
       if (resData.length > 0) {
         setDictionary(resData[0]);
+      }
+      else {
+          <Skeleton />
       }
     } catch (error: any) {
       console.error(error.message);

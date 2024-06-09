@@ -21,7 +21,7 @@ const Dictionary: React.FC<DictionaryProps>= ({word,phonetic,photo}) => {
               </header>
          </div>
          <div className="dictionary_image py-4 px-2 flex justify-center items-center flex-1">
-             <Image className='rounded-2xl block' src = {!photo? "/assets/whale.jpg" : photo} alt = "whale" width={400} height={100} />
+             <Image className='rounded-2xl block' src = {!photo? "/assets/whale.jpg" : photo} alt = "whale" width={400} height={200} />
          </div>
     </div>
   )
