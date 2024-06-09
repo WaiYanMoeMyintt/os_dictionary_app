@@ -3,31 +3,58 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+    /* --primary-color:#151E3F;
+    --primary-font-color:#CBCBD4;
+    --second-font-color:#ADB4BF;
+    --button-primary:#FF9B42; */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    --primary-color:#fff;
+    --second-color:#14274e;
+    --primary-font-color:#d4d7df;
+    --second-font-color:#f7f7f7;
+    --button-primary:#ffe05d;
+    
 }
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    height: 120vh;
+    background-color: var(--primary-color);
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.nav_button{
+    background-color: var(--second-color);
+    color: var(--primary-font-color);
+    border-radius: 1rem;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    /* box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; */
+}
+form {
+    padding: 1rem .5rem;
+    display: flex;
+}
+form input {
+    width: 100%;
+    height: 2.5rem;
+    padding-left: .5rem;
+    border-radius: .5rem;
+    outline: none;
+    background-color: #eeecec;;
+}
+form input::placeholder {
+     color: var(--second-color);
+     font-size: .9rem;
+}
+form img {
+     margin-left: -2rem;
+}
+header {
+    background-color: var(--second-color);
+    height: 5rem;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+header p {
+    color:var(--primary-font-color);
+    font-size: .8rem;
+}
+.right {
+    background-color: var(--button-primary);
+    border-radius: 50%;
 }
