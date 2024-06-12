@@ -59,3 +59,22 @@ header p {
     background-color: var(--button-primary);
     border-radius: 50%;
 }
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 0.6rem;
+    height: 0.4rem;
+  }
+  
+  ::-webkit-scrollbar-button {
+    background:#15161d;
+  }
+  
+  ::-webkit-scrollbar-track-piece {
+    /* background: #888; */
+    background-color: var(--second-bg-color);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+      background:#4c4c4d;
+  }

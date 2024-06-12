@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import toast, {Toaster} from "react-hot-toast";
 
 interface DictionaryProps {
   word: string;
@@ -17,7 +18,13 @@ const Dictionary: React.FC<DictionaryProps> = ({
 
 
   const playSound = ()=>{
-      return new Audio(sound).play();
+      if(sound){
+         return  new Audio(sound).play();
+      }
+      else {
+        toast.error(`Sound can't availabile`);
+        return  new Audio("").play();
+      }
   }
   
 
@@ -49,6 +56,7 @@ const Dictionary: React.FC<DictionaryProps> = ({
           height={200}
         />
       </div>
+      <Toaster reverseOrder={false} position="top-center"/>
     </div>
   );
 };

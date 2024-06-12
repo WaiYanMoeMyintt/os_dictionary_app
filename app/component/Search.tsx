@@ -50,7 +50,6 @@ const Search = () => {
       if (resData.length > 0 && resData.length !== 0) {
         setDictionary(resData[0]);
         setSource(resData[0].sourceUrls?.[0] || "");
-        toast.success(`Available Dictionary`);
       } else {
         toast.error(`Dictionary word can't available`);
         console.log("error");
