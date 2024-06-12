@@ -36,7 +36,8 @@ form input {
     padding-left: .5rem;
     border-radius: .5rem;
     outline: none;
-    background-color: #eeecec;;
+    background-color: #eeecec;
+    color: #1c1c1c;
 }
 form input::placeholder {
      color: var(--second-color);

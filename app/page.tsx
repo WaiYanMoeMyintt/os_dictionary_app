@@ -1,14 +1,12 @@
-import React from 'react'
-import NavMenu from './component/NavMenu'
-import Search from './component/Search'
-import Dictionary from './component/Dictionary'
-const page = () => {
+import ClientLayout from './ClientLayout';
+import Search from './component/Search';
+const Page = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
-        <NavMenu />
-        <Search />
-    </div>
-  )
-}
+    <ClientLayout>
+       <Search />
+      {children}
+    </ClientLayout>
+  );
+};
 
-export default page
+export default Page;

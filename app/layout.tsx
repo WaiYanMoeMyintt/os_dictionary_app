@@ -1,22 +1,20 @@
-import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-
 const inter = Nunito({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Dicitonary Web App",
-  description: "Search any nouns or pharses on app",
+export const metadata = {
+  title: "Dictionary Web App",
+  description: "Search any nouns or phrases on app",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
