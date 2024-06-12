@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Dictionary from "./Dictionary";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -15,27 +15,22 @@ const Search = () => {
   const photoAPI: string = `https://api.unsplash.com/search/photos?query=${value}&client_id=qWxS1NkOkoq5Wox-dDXbOXhTUZnBD9hy_Rs_vbzOgD4`;
 
   const audio =
-    dictionary.phonetics?.map((items: any, index: number) => {
-      return items.audio;
-    }) || [];
+    dictionary.phonetics?.map((items: any) => items.audio) || [];
 
   const nounMeaning =
     dictionary.meanings?.map((items: any) => {
       if (items?.partOfSpeech === "noun") {
-        return items.definitions?.map((defi: any, index: number) => {
-          return defi.definition;
-        });
+        return items.definitions?.map((defi: any) => defi.definition);
       }
+      return null;
     }) || [];
+
   const verbMeaning =
     dictionary.meanings?.map((items: any) => {
-      if (items?.partOfSpeech === "verb" && items?.partOfSpeech) {
-        return items.definitions?.map((defi: any, index: number) => {
-          return defi.definition;
-        });
-      } else {
-        return null;
+      if (items?.partOfSpeech === "verb") {
+        return items.definitions?.map((defi: any) => defi.definition);
       }
+      return null;
     }) || [];
 
   useEffect(() => {
@@ -55,9 +50,9 @@ const Search = () => {
       if (resData.length > 0 && resData.length !== 0) {
         setDictionary(resData[0]);
         setSource(resData[0].sourceUrls?.[0] || "");
-        toast.success(`Availabile Dicitonary`);
+        toast.success(`Available Dictionary`);
       } else {
-        toast.error(`Dicitonary word can't availabile`);
+        toast.error(`Dictionary word can't available`);
         console.log("error");
       }
     } catch (error: any) {
@@ -115,7 +110,7 @@ const Search = () => {
         photo={photo}
       />
       <Noun noun={nounMeaning} verb={verbMeaning} path={source} />
-      <Toaster   reverseOrder={false} position="top-center"/>
+      <Toaster reverseOrder={false} position="top-center"/>
     </div>
   );
 };
