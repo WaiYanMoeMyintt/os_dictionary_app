@@ -5,9 +5,9 @@ import Link from "next/link";
 interface nounProps {
   noun?: any;
   verb?: any;
-  source: string [];
+  path: string;
 }
-const Noun: React.FC<nounProps> = ({ noun, verb, source }) => {
+const Noun: React.FC<nounProps> = ({ noun, verb , path}) => {
   return (
     <div className="part_content py-4 px-2">
       <div className="noun_result  mb-4 ">
@@ -37,13 +37,13 @@ const Noun: React.FC<nounProps> = ({ noun, verb, source }) => {
 
       <div className="source_result">
         <h3 className="mb-1 text-xl font-bold">Source</h3>
-        {/* <Link
-          className="text-sm mt-4 hover:text-blue-900 transition-all  text-blue-800"
-          href={source[0]}
+        <Link
+          className="text-sm mt-4 hover:text-blue-900 transition-all  text-blue-800 source_link"
+          href={path}
           target="_blank"
         >
-          {source[0]}
-        </Link> */}
+          {path}
+        </Link>
       </div>
     </div>
   );

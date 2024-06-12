@@ -1,12 +1,14 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import Image from "next/image";
 import Dictionary from "./Dictionary";
 import { Skeleton } from "@/components/ui/skeleton";
 import Noun from "./Noun";
+import toast, { Toaster } from "react-hot-toast";
 
 const Search = () => {
   const [value, setValue] = useState<string>("computer");
+  const [source, setSource] = useState<string>("");
   const [dictionary, setDictionary] = useState<any>({});
   const [photo, setPhoto] = useState<any>({});
   const dictionaryAPI: string = `https://api.dictionaryapi.dev/api/v2/entries/en/${value}`;
@@ -17,26 +19,24 @@ const Search = () => {
       return items.audio;
     }) || [];
 
-  const nounMeaning = dictionary.meanings?.map((items: any) => {
-    if (items?.partOfSpeech === "noun") {
-      return items.definitions?.map((defi: any, index: number) => {
-        return defi.definition;
-      });
-    }
-  }) || []
-  const verbMeaning = dictionary.meanings?.map((items: any) => {
-    if (items?.partOfSpeech === "verb" && items?.partOfSpeech) {
-      return items.definitions?.map((defi: any, index: number) => {
-         console.log(defi.definition)
-        return defi.definition;
-      });
-    }
-    else {
-      return null;
-    }
-  }) || []
-
-
+  const nounMeaning =
+    dictionary.meanings?.map((items: any) => {
+      if (items?.partOfSpeech === "noun") {
+        return items.definitions?.map((defi: any, index: number) => {
+          return defi.definition;
+        });
+      }
+    }) || [];
+  const verbMeaning =
+    dictionary.meanings?.map((items: any) => {
+      if (items?.partOfSpeech === "verb" && items?.partOfSpeech) {
+        return items.definitions?.map((defi: any, index: number) => {
+          return defi.definition;
+        });
+      } else {
+        return null;
+      }
+    }) || [];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -51,13 +51,18 @@ const Search = () => {
     try {
       const fetchAPI = await fetch(dictionaryAPI);
       const resData = await fetchAPI.json();
+      console.log(resData[0]);
       if (resData.length > 0 && resData.length !== 0) {
         setDictionary(resData[0]);
+        setSource(resData[0].sourceUrls?.[0] || "");
+        toast.success(`Availabile Dicitonary`);
       } else {
-        <Skeleton />;
+        toast.error(`Dicitonary word can't availabile`);
+        console.log("error");
       }
     } catch (error: any) {
       console.error(error.message);
+      return error.message;
     }
   };
 
@@ -109,7 +114,8 @@ const Search = () => {
         phonetic={dictionary.phonetic}
         photo={photo}
       />
-      <Noun noun = {nounMeaning} verb = {verbMeaning} source = {dictionary.sourceUrls} />
+      <Noun noun={nounMeaning} verb={verbMeaning} path={source} />
+      <Toaster   reverseOrder={false} position="top-center"/>
     </div>
   );
 };
