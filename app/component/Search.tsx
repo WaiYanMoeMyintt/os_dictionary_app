@@ -22,7 +22,7 @@ const Search = () => {
       if (items?.partOfSpeech === "noun") {
         return items.definitions?.map((defi: any) => defi.definition);
       }
-      return null;
+      return [];
     }) || [];
 
   const verbMeaning =

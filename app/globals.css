@@ -78,3 +78,51 @@ header p {
   ::-webkit-scrollbar-thumb {
       background:#4c4c4d;
   }
+
+
+@media only screen and (max-width:1300px) {
+    body {
+        margin: 1rem 2rem;
+        border-radius: .5rem;
+    }
+    .parent {
+        padding: 1rem 2rem;
+    }
+    .dicitonary_image{
+       display: block;
+       width: 100%;
+    }
+}
+@media only screen and (max-width:991px) {
+    body {
+        margin: 1rem 2rem;
+        border-radius: .5rem;
+    }
+    .parent {
+        padding: 1rem 2rem;
+    }
+    .dicitonary_image{
+       display: block;
+       width: 100%;
+    }
+}
+
+@media only screen and (max-width:375px) {
+    body {
+        margin: 0;
+    }
+    .dicitonary_image{
+       display: block;
+       width: 100%;
+    }
+}
+
+@media only screen and (max-width:575px) {
+    body {
+        margin: 0;
+    }
+    .dicitonary_image{
+       display: block;
+       width: 100%;
+    }
+}

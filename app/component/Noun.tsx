@@ -7,7 +7,8 @@ interface nounProps {
   verb?: any;
   path: string;
 }
-const Noun: React.FC<nounProps> = ({ noun, verb , path}) => {
+const Noun: React.FC<nounProps> = ({ noun, verb, path }) => {
+
   return (
     <div className="part_content py-4 px-2">
       <div className="noun_result  mb-4 ">
@@ -17,7 +18,7 @@ const Noun: React.FC<nounProps> = ({ noun, verb , path}) => {
         </div>
         <div className="noun_content">
           <p className="text-sm my-1">Meaning</p>
-          <h3 className="leading-8">{noun}</h3>
+             <h3 className="leading-8">{noun}</h3>
         </div>
       </div>
       <div className="verb_result mb-4 ">
@@ -34,7 +35,6 @@ const Noun: React.FC<nounProps> = ({ noun, verb , path}) => {
           )}
         </div>
       </div>
-
       <div className="source_result">
         <h3 className="mb-1 text-xl font-bold">Source</h3>
         <Link

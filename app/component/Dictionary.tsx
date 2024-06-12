@@ -1,12 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import toast, {Toaster} from "react-hot-toast";
-
+import toast, { Toaster } from "react-hot-toast";
+import { Skeleton } from "@/components/ui/skeleton";
 interface DictionaryProps {
   word: string;
   phonetic: string;
   photo: string;
-  sound:any;
+  sound: any;
 }
 
 const Dictionary: React.FC<DictionaryProps> = ({
@@ -15,18 +15,14 @@ const Dictionary: React.FC<DictionaryProps> = ({
   photo,
   sound,
 }) => {
-
-
-  const playSound = ()=>{
-      if(sound){
-         return  new Audio(sound).play();
-      }
-      else {
-        toast.error(`Sound can't availabile`);
-        return  new Audio("").play();
-      }
-  }
-  
+  const playSound = () => {
+    if (sound) {
+      return new Audio(sound).play();
+    } else {
+      toast.error(`Sound can't availabile`);
+      return new Audio("").play();
+    }
+  };
 
   return (
     <div className="dictionary_container">
@@ -37,7 +33,7 @@ const Dictionary: React.FC<DictionaryProps> = ({
             <p>{phonetic}</p>
           </div>
           <div className="right p-1 cursor-pointer">
-            <Image  
+            <Image
               src="/assets/play.svg"
               alt="play"
               width={20}
@@ -48,15 +44,19 @@ const Dictionary: React.FC<DictionaryProps> = ({
         </header>
       </div>
       <div className="dictionary_image py-4 px-2 flex justify-center items-center flex-1">
-        <Image
-          className="rounded block"
-          src={!photo ? "/assets/whale.jpg" : photo}
-          alt="whale"
-          width={400}
-          height={200}
-        />
+        {!photo && photo.length === 0 ? (
+          <Skeleton />
+        ) : (
+          <Image
+            className="rounded block dicitonary_image"
+            src={!photo ? "/assets/whale.jpg" : photo}
+            alt="whale"
+            width={400}
+            height={200}
+          />
+        )}
       </div>
-      <Toaster reverseOrder={false} position="top-center"/>
+      <Toaster reverseOrder={false} position="top-center" />
     </div>
   );
 };
